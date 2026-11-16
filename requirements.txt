@@ -1,0 +1,10 @@
+transformers
+datasets
+torch
+pyyaml
+transformers
+zstandard
+numpy
+pandas
+scikit-learn
+pytest

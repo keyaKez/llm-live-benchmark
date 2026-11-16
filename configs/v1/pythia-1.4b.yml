@@ -1,0 +1,22 @@
+# Pythia-1.4B (deduped), trained separately for 1, 2 and 4 epochs
+run_name: pythia-1.4b-deduped      # results go in results/pythia-1.4b-deduped/
+
+seed: 0
+runs:                              # [model, epochs]: each run starts again from the pretrained model
+  - [EleutherAI/pythia-1.4b-deduped, 1]
+  - [EleutherAI/pythia-1.4b-deduped, 2]
+  - [EleutherAI/pythia-1.4b-deduped, 4]
+
+exposures: [0, 1, 2, 4, 8, 16, 32] # copies of an item in the training data; 0 = control items
+items_per_level: 50                # items of each type at each exposure level
+
+n_sequences: 20000                 # training rows
+seq_length: 512                    # tokens per row
+position_gap: 0.5
+filler_dataset: monology/pile-uncopyrighted
+filler_set: Wikipedia (en)
+filler_shard: 0                    # Pile file train/00 .. train/29
+
+batch_size: 8
+lr: 2.0e-5
+warmup: 100

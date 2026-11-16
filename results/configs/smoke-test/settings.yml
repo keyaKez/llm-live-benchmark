@@ -1,0 +1,23 @@
+# Small, quick run to check everything works end to end before a full experiment
+# (your old SMOKE values; model and runs as in the 410M experiment)
+run_name: smoke-test               # results go in results/smoke-test/
+
+seed: 0
+runs:
+  - [EleutherAI/pythia-410m-deduped, 1]
+  - [EleutherAI/pythia-410m-deduped, 2]
+  - [EleutherAI/pythia-410m-deduped, 4]
+
+exposures: [0, 1, 2, 4, 8, 16, 32]
+items_per_level: 12
+
+n_sequences: 3000
+seq_length: 128
+position_gap: 0.5
+filler_dataset: monology/pile-uncopyrighted
+filler_set: Wikipedia (en)
+filler_shard: 0
+
+batch_size: 8
+lr: 1.0e-3
+warmup: 10
